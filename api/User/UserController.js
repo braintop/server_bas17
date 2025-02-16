@@ -1,8 +1,10 @@
+// ייבוא מודל המשתמש
 const User = require('./UserModel');
 
+// פונקציה להרשמת משתמש חדש
 const register = async (req, res) => {
     try {
-        // Check if user already exists
+        // בדיקה אם המשתמש כבר קיים במערכת
         const existingUser = await User.findOne({ email: req.body.email });
         if (existingUser) {
             return res.status(400).json({
@@ -11,19 +13,19 @@ const register = async (req, res) => {
             });
         }
 
-        // Create new user
+        // יצירת משתמש חדש
         const newUser = new User({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
             birthday: req.body.birthday,
-            permission: 'user' // Default permission
+            permission: 'user' // הרשאת ברירת מחדל
         });
 
-        // Save user to database
+        // שמירת המשתמש במסד הנתונים
         const savedUser = await newUser.save();
 
-        // Return success response
+        // החזרת תשובת הצלחה
         res.status(201).json({
             success: true,
             message: 'User registered successfully',
@@ -36,6 +38,7 @@ const register = async (req, res) => {
         });
 
     } catch (error) {
+        // טיפול בשגיאות
         res.status(500).json({
             success: false,
             message: 'Error registering user',
@@ -44,6 +47,7 @@ const register = async (req, res) => {
     }
 };
 
+// ייצוא הפונקציות
 module.exports = {
     register
 };

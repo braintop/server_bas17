@@ -1,7 +1,13 @@
+// ייבוא ספריית אקספרס
 const express = require('express');
-const router = express.Router();// create a router
+// יצירת ראוטר חדש
+const router = express.Router();
 
+// ייבוא בקר המשתמשים
 const UserController = require('./UserController');
 
+// הגדרת נתיב להרשמת משתמש חדש
 router.post('/register', UserController.register);
+
+// ייצוא הראוטר
 module.exports = router;
