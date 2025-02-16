@@ -19,6 +19,7 @@ const register = async (req, res) => {
             lastName: req.body.lastName,
             email: req.body.email,
             birthday: req.body.birthday,
+            password: req.body.password,
             permission: 'user' // הרשאת ברירת מחדל
         });
 

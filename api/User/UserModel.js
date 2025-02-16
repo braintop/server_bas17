@@ -12,6 +12,11 @@ const userSchema = new mongoose.Schema({
         required: true,   // שדה חובה
         trim: true       // מסיר רווחים מיותרים
     },
+    password: {          // סיסמא
+        type: String,     // מסוג מחרוזת
+        required: true,   // שדה חובה
+        trim: true       // מסיר רווחים מיותרים
+    },
     email: {              // כתובת אימייל
         type: String,     // מסוג מחרוזת
         required: true,   // שדה חובה
